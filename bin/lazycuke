@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require_relative 'helper.rb'
+require_relative 'generate.rb'
+require 'lazycuke/version'
+
+@features_dir = File.join(FileUtils.pwd, "features")
+@support_dir = File.join(@features_dir, "support")
+@source_dir = File.join(File.dirname(__FILE__), '..', 'scaffold')
+
+if (ARGV.length == 0)
+  print_usages
+else
+	cmd = ARGV.shift
+
+	if cmd == "help"
+  		print_help
+	elsif cmd == "gen"
+  		lazycuke_scaffold
+	elsif cmd == "version"
+		puts Lazycuke::VERSION
+  	else
+  		print_usage
+	end
+end
